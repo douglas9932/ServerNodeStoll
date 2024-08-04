@@ -6,7 +6,7 @@ const app = express();
 const jwt = require('jsonwebtoken');
 const port = 32322;
 const http = require('http');
-const hostname = '0.0.0.0';
+const hostname = '92.112.176.30';
 
   // app.use(express.json());
   app.use(cors());
