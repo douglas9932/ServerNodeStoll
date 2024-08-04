@@ -5,7 +5,8 @@ const cors = require("cors");
 const app = express();
 const jwt = require('jsonwebtoken');
 const port = 32322;
-
+const http = require('http');
+const hostname = '0.0.0.0';
 
   // app.use(express.json());
   app.use(cors());
@@ -1541,4 +1542,14 @@ app.post('/DeletarTeste', (req, res) => {
 
   app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
+  });
+
+  const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Olá, mundo!\n');
+  });
+  
+  server.listen(port, hostname, () => {
+    console.log(`Meu Servidor está rodando em http://${hostname}:${port}/`);
   });
