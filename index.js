@@ -25,9 +25,9 @@ const port = 32322;
         // database: 'db_stoll',
         
          host: '92.112.176.30',
-         user: 'tesc_root',
+         user: 'tescaro',
          password: 'Stoll12345',
-         database: 'tesc_DB_STOLL',
+         database: 'dbStoll',
         
         //host: '193.203.175.85',
         //user: 'u156150556_root',
