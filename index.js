@@ -1548,11 +1548,11 @@ app.post('/DeletarTeste', (req, res) => {
 
   
   const path = require('path');
-  const keyPath = path.join(__dirname, 'ssl', 'code.key');
-  const certPath = path.join(__dirname, 'ssl', 'code.crt');
+  const keyPath = path.join(__dirname, '/etc/nginx/ssl-certificates/', 'www.tescarosoft.com.br.key');
+  const certPath = path.join(__dirname, '/etc/nginx/ssl-certificates/', 'www.tescarosoft.com.br.crt');
 
   https.createServer({
     
-    cert: fs.readFileSync(certPath),
-    key: fs.readFileSync(keyPath)
+    cert: fs.readFileSync("/etc/nginx/ssl-certificates/www.tescarosoft.com.br.crt"),
+    key: fs.readFileSync("/etc/nginx/ssl-certificates/www.tescarosoft.com.br.key")
 }, app).listen(portHttps, ()=> console.log(`Rodando em https porta ${portHttps}`));
