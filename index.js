@@ -2,9 +2,12 @@ const { format, parseISO } = require('date-fns');
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require("cors");
+const fs = require("fs");
+const https = require("https");
 const app = express();
 const jwt = require('jsonwebtoken');
-const port = 32322;
+const portHttp = 32322;
+const portHttps = 32323;
 
   // app.use(express.json());
   app.use(cors());
@@ -1538,6 +1541,12 @@ app.post('/DeletarTeste', (req, res) => {
     return value;
   };
 
-  app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+  app.listen(portHttp, () => {
+    console.log(`Servidor rodando na portaHttp ${portHttp}`);
   });
+
+
+  https.createServer({
+    cert: fs.readFileSync('ssl/code.crt'),
+    key: fs.readFileSync('ssl/code.key')
+}, app).listen(portHttps, ()=> console.log(`Rodando em https porta ${portHttps}`));
