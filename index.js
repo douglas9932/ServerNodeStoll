@@ -1546,7 +1546,13 @@ app.post('/DeletarTeste', (req, res) => {
   });
 
 
+  
+  const path = require('path');
+  const keyPath = path.join(__dirname, 'ssl', 'code.key');
+  const certPath = path.join(__dirname, 'ssl', 'code.crt');
+
   https.createServer({
-    cert: fs.readFileSync('ssl/code.crt'),
-    key: fs.readFileSync('ssl/code.key')
+    
+    cert: fs.readFileSync(certPath),
+    key: fs.readFileSync(keyPath)
 }, app).listen(portHttps, ()=> console.log(`Rodando em https porta ${portHttps}`));
